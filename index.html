@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkbook</title>
+    <link href="styles/style.css" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded",function(event){
+
+            const checkbookBody = document.querySelector("#checkbookBody");
+            const newRow=`
+                <tr>
+                    <td><input type="date" class="date"></td>
+                    <td><input type="number" min="501" class="checkNumber"></td>
+                    <td><input type="text" class="text"></td>
+                    <td><input type="list" list="budgetItems" class="budget_type"></td>
+                    <td><span class="money">$</span><input type="number"><button type="button">Save</button></td>
+                </tr>`;
+            checkbookBody.addEventListener("click",function (event){
+                //use event.target here
+                if (event.target.matches("button")) {
+                    checkbookBody.insertAdjacentHTML('beforeend', newRow);
+                };
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <datalist id="budgetItems">
+        <option value="Housing">
+        <option value="Food">
+        <option value="Clothing">
+        <option value="Utilities">
+        <option value="Transportation">
+        <option value="Entertainment">
+        <option value="Miscellaneous">
+    </datalist>
+        <h1>Checkbook and Budget Calculator</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Check #</th>
+                    <th>Item</th>
+                    <th>Budget Type</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+<!--            beforebegin-->
+            <tbody id="checkbookBody">
+<!--            afterbegin-->
+                <tr>
+                    <td><input type="date" class="date"></td>
+                    <td><input type="number" min="501" class="checkNumber"></td>
+                    <td><input type="text" class="text"></td>
+                    <td><input type="list" list="budgetItems" class="budget_type"></td>
+                    <td><span class="money">$</span><input type="number"><button type="button">Save</button></td>
+                </tr>
+<!--            beforeend-->
+            </tbody>
+<!--            afterend-->
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="subtotal">Subtotal</td>
+                    <td><span class="money">$</span><input type="number"></td>
+                </tr>
+            </tfoot>
+        </table>
+
+</body>
+</html>
